@@ -54,6 +54,7 @@ use App\Http\Livewire\Admin\Product\AddProductComponent;
 use App\Http\Livewire\Admin\Category\CategoriesComponent;
 use App\Http\Livewire\Admin\Product\EditProductComponent;
 use App\Http\Livewire\Admin\Category\AddCategoryComponent;
+use App\Http\Livewire\Admin\Home\HomePageSettingComponent;
 use App\Http\Livewire\Admin\Messages\AllMessagesComponent;
 use App\Http\Livewire\Admin\Category\EditCategoryComponent;
 use App\Http\Livewire\Admin\Home\HomePageCategoryComponent;
@@ -134,6 +135,7 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
 		Route::get('/edit/coupon/{id}', EditCouponComponent::class)->name('admin.edit_coupon');
 
 		Route::get('/all/messages', AllMessagesComponent::class)->name('admin.messages');
+		Route::get('/web/general/setting', HomePageSettingComponent::class)->name('admin.setting');
 	});									 
 });
 

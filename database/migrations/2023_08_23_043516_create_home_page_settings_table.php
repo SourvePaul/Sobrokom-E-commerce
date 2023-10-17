@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('mobile')->default('+88031064735');
             $table->string('email')->default('info@nutshut.com');
             $table->string('address')->default('41 #House, 6 #Road, Dhaka 1219');
-            $table->string('map')->nullable();
+            $table->text('map')->nullable();
             $table->string('facebook')->default('www.facebook.com');
             $table->string('twitter')->default('www.twitter.com');
             $table->string('youtube')->default('www.youtube.com');
