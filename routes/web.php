@@ -58,6 +58,7 @@ use App\Http\Livewire\Admin\Home\HomePageSettingComponent;
 use App\Http\Livewire\Admin\Messages\AllMessagesComponent;
 use App\Http\Livewire\Admin\Category\EditCategoryComponent;
 use App\Http\Livewire\Admin\Home\HomePageCategoryComponent;
+use App\Http\Livewire\Admin\Product\Attribute\AddAttributeComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +137,7 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
 
 		Route::get('/all/messages', AllMessagesComponent::class)->name('admin.messages');
 		Route::get('/web/general/setting', HomePageSettingComponent::class)->name('admin.setting');
+		Route::get('/add/attribute', AddAttributeComponent::class)->name('admin.add_attribute');
 	});									 
 });
 

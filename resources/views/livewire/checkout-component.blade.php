@@ -78,8 +78,8 @@
                     <div class="divider mt-50 mb-50"></div>
                 </div>
             </div>
-            <form method="PUT">
-                @csrf
+            <form wire:submit.prevent="placeOrder">
+                {{-- @csrf --}}
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-25">
@@ -99,7 +99,7 @@
                             @error('email') <span class="text-danger">{{$message}}</span>@enderror
                         </div>
                         <div class="form-group">
-                            <input required="" type="number" name="mobile" placeholder="Enter mobile number.." wire:model="mobile">
+                            <input required="" type="tel" name="mobile" placeholder="Enter mobile number.." wire:model="mobile">
                             @error('mobile') <span class="text-danger">{{$message}}</span>@enderror
                         </div>
                         <div class="form-group">
@@ -250,37 +250,37 @@
                                 <div class="payment_option">
                                     @if($paymentmode == "card")
                                         <div class="warp-address-billing">
-                                            @if(Session::has('message'))
+                                            @if(Session::has('checkout'))
                                             <div class="text-danger">{{Sesssion::get('message')}}</div>
                                             @endif
                                             <p class="row-in-form">
-                                                <label for="card-no">Card Number:</label>
-                                                <input type="text" name="card-no" value="" class="form-control" placeholder="card number here..">
+                                                <label for="card_no">Card Number:</label>
+                                                <input type="text" name="card_no" id="card_no" value="" class="form-control" placeholder="card number here.." wire:model="card_no">
                                                 @error('card_no')<span class="text-danger">{{$message}}</span>@enderror
                                             </p>
                                             <p class="row-in-form">
-                                                <label for="exp-month">Expiry Month:</label>
-                                                <input type="text" name="exp-mont" value="" class="form-control" placeholder="MM">
+                                                <label for="exp_month">Expiry Month:</label>
+                                                <input type="text" name="exp_month" id="exp_month" value="" class="form-control" placeholder="MM" wire:model="exp_month">
                                                 @error('exp_month')<span class="text-danger">{{$message}}</span>@enderror
                                             </p>
                                             <p class="row-in-form">
-                                                <label for="exp-year">Expiry year:</label>
-                                                <input type="text" name="exp-year" value="" class="form-control" placeholder="YY">
+                                                <label for="exp_year">Expiry year:</label>
+                                                <input type="text" name="exp_year" id="exp_year" value="" class="form-control" placeholder="YY" wire:model="exp_year">
                                                 @error('exp_year')<span class="text-danger">{{$message}}</span>@enderror
                                             </p>
                                             <p class="row-in-form">
-                                                <label for="exp-year">CVC:</label>
-                                                <input type="password" name="cvc" value="" class="form-control" placeholder="CVC">
+                                                <label for="cvc">CVC:</label>
+                                                <input type="password" name="cvc" id="cvc" value="" class="form-control" placeholder="CVC" wire:model="cvc">
                                                 @error('cvc')<span class="text-danger">{{$message}}</span>@enderror
                                             </p>
                                         </div>
                                     @endif
                                     <div class="custome-radio mt-5">
-                                        <input type="radio" name="payment-method" id="payment-method-visa" value="card" >
+                                        <input type="radio" name="payment-method" id="payment-method-visa" value="card"  wire:model.defer="paymentmode">
                                         <label for="payment-method-visa" class="form-label"> Debit/Credit Card</label>
                                     </div>   
                                     <div class="custome-radio mt-5">
-                                        <input type="radio" name="payment-method" id="payment-method-cod" value="cod" >
+                                        <input type="radio" name="payment-method" id="payment-method-cod" value="cod" wire:model.defer="paymentmode">
                                         <label for="payment-method-cod" class="form-label"> Cash on delivery</label>
                                     </div>
                                 </div>

@@ -43,6 +43,7 @@ class CheckoutComponent extends Component
     public $s_country;
     public $s_zipcode;
     public $card_no;
+    public $exp_month;
     public $exp_year;
     public $cvc;
     public $product_id;
@@ -101,7 +102,7 @@ class CheckoutComponent extends Component
             'zipcode' => 'required',
             'paymentmode' => 'required',
         ]);
-
+        // dd(1);
         if($this->paymentmode == 'card') {
             $this->validate([
                 'card_no' => 'required|numeric',
@@ -258,8 +259,9 @@ class CheckoutComponent extends Component
         $transaction->status = $status;
         // $transaction->subtotal = Cart::instance('cart')->subtotal();
         // $transaction->tax = Cart::instance('cart')->tax();
-        $transaction->total = Cart::instance('cart')->total();
+        $transaction->total = Cart::instance('cart')->total();  
         $transaction->save();
+        // dd($transaction);
     }
 
     public function orderConfirmationMail($order) {
